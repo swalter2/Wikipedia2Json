@@ -653,9 +653,12 @@ class OutputSplitter:
         self.__out_file.close()
 
     def __get_dir_name(self):
-        char1 = self.__dir_index % 26
-        char2 = self.__dir_index / 26 % 26
-        return os.path.join(self.__path_name, '%c%c' % (ord('A') + char2, ord('A') + char1))
+        char1 = int(self.__dir_index % 26)
+        char2 = int(self.__dir_index / 26 % 26)
+        return os.path.join(self.__path_name,
+                            '%c%c' % (ord('A')
+                                      + char2, ord('A')
+                                      + char1))
 
     def __get_file_name(self):
         return 'wiki%02d' % self.__file_index
